@@ -1,6 +1,6 @@
 package com.effective.android.anchors;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.SparseArray;
 
 

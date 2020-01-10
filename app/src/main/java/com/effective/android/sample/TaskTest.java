@@ -123,74 +123,18 @@ public class TaskTest {
         builder2.add(TASK_23).dependOn(TASK_22);
         Project project2 = builder2.build();
 
-        Project.Builder builder3 = new Project.Builder(PROJECT_3, testTaskFactory);
-        builder3.add(TASK_30);
-        builder3.add(TASK_31).dependOn(TASK_30);
-        builder3.add(TASK_32).dependOn(TASK_31);
-        builder3.add(TASK_33).dependOn(TASK_32);
-        Project project3 = builder3.build();
-
-        Project.Builder builder4 = new Project.Builder(PROJECT_4, testTaskFactory);
-        builder4.add(TASK_40);
-        builder4.add(TASK_41).dependOn(TASK_40);
-        builder4.add(TASK_42).dependOn(TASK_41);
-        builder4.add(TASK_43).dependOn(TASK_42);
-        Project project4 = builder4.build();
-
-        Project.Builder builder5 = new Project.Builder(PROJECT_5, testTaskFactory);
-        builder5.add(TASK_50);
-        builder5.add(TASK_51).dependOn(TASK_50);
-        builder5.add(TASK_52).dependOn(TASK_50);
-        builder5.add(TASK_53).dependOn(TASK_52);
-        Project project5 = builder5.build();
-
-        Project.Builder builder6 = new Project.Builder(PROJECT_6, testTaskFactory);
-        builder6.add(TASK_60);
-        builder6.add(TASK_61).dependOn(TASK_60);
-        builder6.add(TASK_62).dependOn(TASK_60);
-        builder6.add(TASK_63).dependOn(TASK_62);
-        Project project6 = builder6.build();
-
-        Project.Builder builder7 = new Project.Builder(PROJECT_7, testTaskFactory);
-        builder7.add(TASK_70);
-        builder7.add(TASK_71).dependOn(TASK_70);
-        builder7.add(TASK_72).dependOn(TASK_70);
-        builder7.add(TASK_73).dependOn(TASK_72);
-        Project project7 = builder7.build();
-
-        Project.Builder builder8 = new Project.Builder(PROJECT_8, testTaskFactory);
-        builder8.add(TASK_80);
-        builder8.add(TASK_81).dependOn(TASK_80);
-        builder8.add(TASK_82).dependOn(TASK_80);
-        builder8.add(TASK_83).dependOn(TASK_82);
-        Project project8 = builder8.build();
-
-        Project.Builder builder9 = new Project.Builder(PROJECT_9, testTaskFactory);
-        builder9.add(TASK_90);
-        builder9.add(TASK_91).dependOn(TASK_90);
-        builder9.add(TASK_92).dependOn(TASK_90);
-        builder9.add(TASK_93).dependOn(TASK_92);
-        Project project9 = builder9.build();
-
 
         final Task UiTaskA = new TestTaskFactory.UITHREAD_TASK_A();
         Task UiTaskB = new TestTaskFactory.UITHREAD_TASK_B();
         Task UiTaskC = new TestTaskFactory.UITHREAD_TASK_C();
 
-        project9.dependOn(UiTaskA);
-        project8.dependOn(UiTaskA);
-        project7.dependOn(UiTaskA);
-        project6.dependOn(UiTaskA);
-        project5.dependOn(UiTaskA);
-        project4.dependOn(UiTaskA);
-        project3.dependOn(UiTaskA);
         project2.dependOn(UiTaskA);
         project1.dependOn(UiTaskA);
         UiTaskB.dependOn(UiTaskA);
         UiTaskC.dependOn(UiTaskA);
 
         AnchorsManager.getInstance().debuggable(true)
-                .addAnchors(TASK_93,"TASK_E","TASK_10")
+                .addAnchors(TASK_23,"TASK_E","TASK_10")
                 .start(UiTaskA);
 
 //        Project.Builder taskAync = new Project.Builder("测试异步效果", testTaskFactory);

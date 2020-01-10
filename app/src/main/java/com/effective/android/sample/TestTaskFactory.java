@@ -1,6 +1,6 @@
 package com.effective.android.sample;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 
 import com.effective.android.anchors.Project;

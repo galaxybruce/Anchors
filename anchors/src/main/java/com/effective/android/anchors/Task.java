@@ -2,9 +2,8 @@ package com.effective.android.anchors;
 
 import android.os.Build;
 import android.os.Trace;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;

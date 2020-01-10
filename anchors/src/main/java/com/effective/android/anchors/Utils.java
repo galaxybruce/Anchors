@@ -1,10 +1,9 @@
 package com.effective.android.anchors;
 
 import android.os.Looper;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.List;
-import java.util.Set;
 
 public class Utils {
 
