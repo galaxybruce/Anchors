@@ -36,6 +36,7 @@ public class LogTaskListener implements TaskListener {
         buildTaskInfoEdge(builder, taskRuntimeInfo);
         addTaskInfoLineString(builder, Constants.DEPENDENCIES, getDependenceInfo(taskRuntimeInfo), false);
         addTaskInfoLineString(builder, Constants.IS_ANCHOR, String.valueOf(taskRuntimeInfo.isAnchor()), false);
+        addTaskInfoLineString(builder, Constants.PROCESS_INFO, getProcessInfo(taskRuntimeInfo), false);
         addTaskInfoLineString(builder, Constants.THREAD_INFO, taskRuntimeInfo.getThreadName(), false);
         addTaskInfoLineString(builder, Constants.START_TIME, String.valueOf(startTime), true);
         addTaskInfoLineString(builder, Constants.START_UNTIL_RUNNING, String.valueOf(runningTime - startTime), true);
@@ -77,6 +78,14 @@ public class LogTaskListener implements TaskListener {
         StringBuilder stringBuilder = new StringBuilder();
         for (String s : taskRuntimeInfo.getDependencies()) {
             stringBuilder.append(s + " ");
+        }
+        return stringBuilder.toString();
+    }
+
+    private static String getProcessInfo(@NonNull TaskRuntimeInfo taskRuntimeInfo) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if(taskRuntimeInfo.getTask() != null) {
+            stringBuilder.append(taskRuntimeInfo.getTask().process.name() + "(当前进程名：" + Utils.getProcessName() + ")");
         }
         return stringBuilder.toString();
     }

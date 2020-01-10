@@ -1,5 +1,7 @@
 package com.effective.android.anchors;
 
+import android.app.Application;
+
 import androidx.annotation.NonNull;
 
 import java.util.HashMap;
@@ -51,7 +53,7 @@ public class Project extends Task {
 
 
     @Override
-    public void run(String name) {
+    public void run(String name, Application application) {
         //不需要处理
     }
 
@@ -185,7 +187,7 @@ public class Project extends Task {
         }
 
         @Override
-        public void run(String name) {
+        public void run(String name, Application application) {
             //noting to do
         }
     }

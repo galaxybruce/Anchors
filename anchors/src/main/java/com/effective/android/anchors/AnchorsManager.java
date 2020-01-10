@@ -4,6 +4,8 @@ package com.effective.android.anchors;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import android.app.Application;
 import android.text.TextUtils;
 
 import java.util.HashSet;
@@ -11,19 +13,26 @@ import java.util.Set;
 
 public class AnchorsManager {
 
-    private volatile static AnchorsManager sInstance = null;
-    boolean debuggable = false;
-    Set<String> anchorTaskIds = new HashSet<>();
+    public boolean debuggable = false;
+    public Application application;
 
-    public static synchronized AnchorsManager getInstance() {
-        if (sInstance == null) {
-            synchronized (AnchorsManager.class) {
-                if (sInstance == null) {
-                    sInstance = new AnchorsManager();
-                }
-            }
-        }
-        return sInstance;
+    public Set<String> anchorTaskIds = new HashSet<>();
+    public boolean isMainProcess;
+
+    private AnchorsManager() {
+    }
+
+    private static class SingletonHolder {
+        private static final AnchorsManager INSTANCE = new AnchorsManager();
+    }
+
+    public static AnchorsManager instance() {
+        return SingletonHolder.INSTANCE;
+    }
+
+    public AnchorsManager setApplication(Application application) {
+        this.application = application;
+        return this;
     }
 
     public AnchorsManager debuggable(boolean debuggable) {
@@ -87,6 +96,7 @@ public class AnchorsManager {
         if (task == null) {
             throw new RuntimeException("can no run a task that was null !");
         }
+        isMainProcess = Utils.isMainProcess();
         syncConfigInfoToRuntime();
         Task startTask = task;
         if(startTask instanceof Project){

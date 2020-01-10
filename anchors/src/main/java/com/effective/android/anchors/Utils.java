@@ -1,6 +1,10 @@
 package com.effective.android.anchors;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.os.Looper;
+import android.text.TextUtils;
+
 import androidx.annotation.NonNull;
 
 import java.util.List;
@@ -50,5 +54,34 @@ public class Utils {
         if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             throw new RuntimeException("AnchorsManager#start should be invoke on MainThread!");
         }
+    }
+
+    /**
+     * 包名判断是否为主进程
+     */
+    public static boolean isMainProcess() {
+        return TextUtils.equals(AnchorsManager.instance().application.getPackageName(), getProcessName());
+    }
+
+    /**
+     * 获取进程全名
+     */
+    static String getProcessName() {
+        ActivityManager am = (ActivityManager) AnchorsManager.instance().application.getSystemService(Context.ACTIVITY_SERVICE);
+        if (am == null) {
+            return "";
+        }
+        List<ActivityManager.RunningAppProcessInfo> runningApps = am.getRunningAppProcesses();
+        if (runningApps == null) {
+            return "";
+        }
+        for (ActivityManager.RunningAppProcessInfo proInfo : runningApps) {
+            if (proInfo.pid == android.os.Process.myPid()) {
+                if (proInfo.processName != null) {
+                    return proInfo.processName;
+                }
+            }
+        }
+        return "";
     }
 }

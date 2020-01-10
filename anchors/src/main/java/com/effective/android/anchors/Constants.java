@@ -23,6 +23,7 @@ class Constants {
     static final String MS_UNIT = "ms";
     static final String HALF_LINE_STRING = "=======================";
     static final String DEPENDENCIES = "依赖任务";
+    static final String PROCESS_INFO = "进程信息";
     static final String THREAD_INFO = "线程信息";
     static final String START_TIME = "开始时刻";
     static final String START_UNTIL_RUNNING = "等待运行耗时";

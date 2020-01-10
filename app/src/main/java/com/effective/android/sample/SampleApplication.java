@@ -16,7 +16,7 @@ public class SampleApplication extends Application {
         }
         Log.d("SampleApplication","onCreate - start");
         LeakCanary.install(this);
-        new TaskTest().startFromApplication();
+        new TaskTest().startFromApplication(this);
         Log.d("SampleApplication","onCreate - end");
     }
 }

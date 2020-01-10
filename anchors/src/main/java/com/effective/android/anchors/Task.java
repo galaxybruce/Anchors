@@ -1,5 +1,6 @@
 package com.effective.android.anchors;
 
+import android.app.Application;
 import android.os.Build;
 import android.os.Trace;
 import androidx.annotation.NonNull;
@@ -25,6 +26,8 @@ public abstract class Task implements Runnable, Comparable<Task> {
     private boolean isAsyncTask;                   //是否是异步存在
     private int mPriority;                         //优先级，数值越低，优先级越低
     private long mExecuteTime;
+    public Process process;                         // 指定在哪个进程初始化
+
 
     public static final int DEFAULT_PRIORITY = 0;
     private List<Task> behindTasks = new ArrayList<>();                                //被依赖者
@@ -34,14 +37,23 @@ public abstract class Task implements Runnable, Comparable<Task> {
 
 
     public Task(String id) {
-        this(id, false);
+        this(id, false, Process.MAIN);
     }
 
     public Task(String id, boolean async) {
-        this.mId = id;
+        this(id, async, Process.MAIN);
+    }
+
+    public Task(boolean async, Process process) {
+        this(null, async, process);
+    }
+
+    public Task(String id, boolean async, Process process) {
+        this.mId = TextUtils.isEmpty(id) ? this.getClass().getSimpleName() : id;
         this.isAsyncTask = async;
+        this.process = process;
         this.mPriority = DEFAULT_PRIORITY;
-        if (TextUtils.isEmpty(id)) {
+        if (TextUtils.isEmpty(mId)) {
             throw new IllegalArgumentException("task's mId can't be empty");
         }
     }
@@ -58,8 +70,9 @@ public abstract class Task implements Runnable, Comparable<Task> {
         return mId;
     }
 
-    public void setPriority(int priority) {
+    public Task setPriority(int priority) {
         this.mPriority = priority;
+        return this;
     }
 
     public int getPriority() {
@@ -99,7 +112,9 @@ public abstract class Task implements Runnable, Comparable<Task> {
             Trace.beginSection(mId);
         }
         toRunning();
-        run(mId);
+        if(!isIgnoreExecute()) {
+            run(mId, AnchorsManager.instance().application);
+        }
         toFinish();
         notifyBehindTasks();
         recycle();
@@ -108,7 +123,7 @@ public abstract class Task implements Runnable, Comparable<Task> {
         }
     }
 
-    protected abstract void run(String name);
+    protected abstract void run(String name, Application application);
 
     void toStart() {
         setState(TaskState.START);
@@ -298,5 +313,26 @@ public abstract class Task implements Runnable, Comparable<Task> {
         behindTasks.clear();
         taskListeners.clear();
         logTaskListeners = null;
+    }
+
+    public boolean isForMainProcess() {
+        return Process.MAIN == process || isForAllProcess();
+    }
+
+    public boolean isNotForMainProcess() {
+        return Process.OTHER == process || isForAllProcess();
+    }
+
+    private boolean isForAllProcess() {
+        return Process.ALL == process;
+    }
+
+    /**
+     * 是否忽略该初始化
+     */
+    public boolean isIgnoreExecute() {
+        boolean execute = (AnchorsManager.instance().isMainProcess && isForMainProcess()) ||
+                (!AnchorsManager.instance().isMainProcess && isNotForMainProcess());
+        return !execute;
     }
 }

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("MainActivity","Demo2 - start");
-                lockableAnchor = new TaskTest().startForTestLockableAnchor();
+                lockableAnchor = new TaskTest().startForTestLockableAnchor(MainActivity.this.getApplication());
                 lockableAnchor.setLockListener(new LockableAnchor.LockListener() {
                     @Override
                     public void lockUp() {

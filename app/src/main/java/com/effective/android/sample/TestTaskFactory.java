@@ -1,5 +1,7 @@
 package com.effective.android.sample;
 
+import android.app.Application;
+
 import androidx.annotation.Nullable;
 
 
@@ -190,7 +192,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(1000);
         }
     }
@@ -202,7 +204,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -214,7 +216,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -226,7 +228,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -238,7 +240,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -250,7 +252,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -262,7 +264,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -274,7 +276,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -286,7 +288,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -298,7 +300,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -310,7 +312,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -322,7 +324,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -334,7 +336,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -346,7 +348,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -358,7 +360,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -370,7 +372,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -382,7 +384,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -394,7 +396,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -406,7 +408,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -418,7 +420,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -430,7 +432,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -442,7 +444,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -454,7 +456,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -466,7 +468,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -478,7 +480,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -490,7 +492,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -502,7 +504,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -514,7 +516,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -526,7 +528,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -538,7 +540,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -550,7 +552,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -562,7 +564,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -574,7 +576,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -586,7 +588,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -598,7 +600,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doIo(200);
         }
     }
@@ -610,7 +612,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -623,7 +625,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -635,7 +637,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -647,7 +649,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -659,7 +661,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -671,7 +673,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -683,7 +685,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -695,7 +697,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }
@@ -707,7 +709,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
 
         @Override
-        protected void run(String name) {
+        protected void run(String name, Application application) {
             doJob(200);
         }
     }

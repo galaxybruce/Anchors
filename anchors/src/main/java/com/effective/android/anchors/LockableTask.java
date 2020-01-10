@@ -1,5 +1,7 @@
 package com.effective.android.anchors;
 
+import android.app.Application;
+
 class LockableTask extends Task {
 
     private LockableAnchor lockableAnchor;
@@ -11,7 +13,7 @@ class LockableTask extends Task {
     }
 
     @Override
-    protected void run(String name) {
+    protected void run(String name, Application application) {
         lockableAnchor.lock();
     }
 

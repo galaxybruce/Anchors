@@ -1,4 +1,6 @@
 package com.effective.android.sample;
+import android.app.Application;
+
 import com.effective.android.anchors.AnchorsManager;
 import com.effective.android.anchors.LockableAnchor;
 import com.effective.android.anchors.Project;
@@ -105,7 +107,7 @@ public class TaskTest {
      * 2019-12-11 14:05:46.086 32459-32459/com.effective.android.sample D/ANCHOR_DETAIL: All anchors were released！
      * 2019-12-11 14:05:46.087 32459-32459/com.effective.android.sample D/SampleApplication: onCreate - end
      */
-    public void startFromApplication() {
+    public void startFromApplication(Application application) {
 
        final  TestTaskFactory testTaskFactory = new TestTaskFactory();
 
@@ -133,7 +135,9 @@ public class TaskTest {
         UiTaskB.dependOn(UiTaskA);
         UiTaskC.dependOn(UiTaskA);
 
-        AnchorsManager.getInstance().debuggable(true)
+        AnchorsManager.instance()
+                .setApplication(application)
+                .debuggable(true)
                 .addAnchors(TASK_23,"TASK_E","TASK_10")
                 .start(UiTaskA);
 
@@ -150,7 +154,7 @@ public class TaskTest {
 //                .start(taskAyncTest);
     }
 
-    public LockableAnchor startForTestLockableAnchor() {
+    public LockableAnchor startForTestLockableAnchor(Application application) {
 
         final  TestTaskFactory testTaskFactory = new TestTaskFactory();
 
@@ -168,7 +172,8 @@ public class TaskTest {
         UiTaskB.dependOn(UiTaskA);
         UiTaskC.dependOn(UiTaskB);
 
-        AnchorsManager anchorsManager = AnchorsManager.getInstance();
+        AnchorsManager anchorsManager = AnchorsManager.instance();
+        anchorsManager.setApplication(application);
         anchorsManager.debuggable(true);
         LockableAnchor lockableAnchor = anchorsManager.requestBlockWhenFinish(testTaskFactory.getTask(TASK_10));
         anchorsManager.start(UiTaskA);
