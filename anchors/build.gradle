@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 28
@@ -16,13 +16,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 
-
-//publish {
-//    userOrg = 'yummylau'
-//    groupId = 'com.effective.android'
-//    artifactId = 'anchors'
-//    publishVersion = '1.0.4'
-//    desc = 'Android startup framework'
-//    website = 'https://github.com/YummyLau/Anchors'
-//}
+publish {
+    userOrg = 'galaxybruce'
+    groupId = 'com.galaxybruce.android'
+    artifactId = 'anchors'
+    publishVersion = '1.0.0'
+    desc = 'Android startup framework'
+    website = 'https://github.com/galaxybruce/Anchors'
+}
 
