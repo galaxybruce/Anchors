@@ -9,6 +9,7 @@ import android.app.Application;
 import android.text.TextUtils;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class AnchorsManager {
@@ -88,6 +89,24 @@ public class AnchorsManager {
         AnchorsRuntime.addAnchorTasks(anchorTaskIds);
         debuggable = false;
         anchorTaskIds.clear();
+    }
+
+    @MainThread
+    public synchronized void start(@NonNull TaskFactory taskFactory, Task... tasks) {
+        final Project.DEF_START_TASK startTask = new Project.DEF_START_TASK();
+        List<Project> projects = taskFactory.initProjects();
+        if(projects != null && !projects.isEmpty()) {
+            for (Project project : projects) {
+                project.dependOn(startTask);
+            }
+        }
+        if(tasks != null && tasks.length > 0) {
+            for (Task task : tasks) {
+                task.dependOn(startTask);
+            }
+        }
+
+        start(startTask);
     }
 
     @MainThread

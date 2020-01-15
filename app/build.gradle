@@ -1,4 +1,5 @@
-apply plugin: 'com.android.application'
+ext.mainApp = true
+apply plugin: 'cc-register'
 
 android {
     compileSdkVersion 29
@@ -8,15 +9,33 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.galaxybruce.android:anchors:1.0.0'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
-//    implementation project(':anchors')
+
+//    implementation 'com.galaxybruce.android:anchors:1.0.0'
+    implementation project(':anchor-annotation')
+    implementation project(':anchors')
+    annotationProcessor project(':anchor-compiler')
+
 }
+
+ccregister.registerInfo.add([
+        //在自动注册组件的基础上增加：自动注册组件B的processor
+        'scanInterface'             : 'com.effective.android.anchors.register.IProjectTask'
+        , 'codeInsertToClassName'   : 'com.effective.android.anchors.TaskFactory'
+        , 'codeInsertToMethodName'  : 'loadTasks'
+        , 'registerMethodName'      : 'register'
+])

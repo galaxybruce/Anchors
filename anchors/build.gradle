@@ -14,13 +14,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation project(':anchor-annotation')
 }
 
 publish {
     userOrg = 'galaxybruce'
     groupId = 'com.galaxybruce.android'
     artifactId = 'anchors'
-    publishVersion = '1.0.0'
+    publishVersion = '1.1.0'
     desc = 'Android startup framework'
     website = 'https://github.com/galaxybruce/Anchors'
 }

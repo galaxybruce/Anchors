@@ -5,13 +5,14 @@ import android.app.Application;
 import androidx.annotation.Nullable;
 
 
-import com.effective.android.anchors.Project;
 import com.effective.android.anchors.Task;
 import com.effective.android.anchors.TaskCreator;
+import com.effective.android.anchors.TaskFactory;
+import com.galaxybruce.android.anchors.annotation.TaskAnchor;
 
 import java.util.Random;
 
-public class TestTaskFactory extends Project.TaskFactory {
+public class TestTaskFactory extends TaskFactory {
 
     public TestTaskFactory() {
         super(new TaskCreator() {
@@ -702,6 +703,7 @@ public class TestTaskFactory extends Project.TaskFactory {
         }
     }
 
+    @TaskAnchor(depends = {TaskTest.TASK_10, TaskTest.TASK_20})
     public static class ASYNC_TASK_5 extends Task {
 
         public ASYNC_TASK_5() {

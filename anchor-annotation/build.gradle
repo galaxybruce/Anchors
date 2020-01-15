@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'com.novoda.bintray-release'
+
+group='com.galaxybruce.android'
+version='1.0.0'
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+publish {
+    userOrg = 'galaxybruce'
+    groupId = group
+    artifactId = 'anchor-annotation'
+    publishVersion = version
+    desc = 'Android startup framework'
+    website = 'https://github.com/galaxybruce/Anchors'
+}

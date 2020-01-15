@@ -139,7 +139,7 @@ public class TaskTest {
                 .setApplication(application)
                 .debuggable(true)
                 .addAnchors(TASK_23,"TASK_E","TASK_10")
-                .start(UiTaskA);
+                .start(testTaskFactory, UiTaskA);
 
 //        Project.Builder taskAync = new Project.Builder("测试异步效果", testTaskFactory);
 //        taskAync.add(UITHREAD_TASK_A);

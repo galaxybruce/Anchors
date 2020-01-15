@@ -1,1 +1,1 @@
-include ':app', ':anchors'
+include ':app', ':anchors', ':anchor-compiler', ':anchor-annotation'

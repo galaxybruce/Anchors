@@ -4,7 +4,11 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
+import com.effective.android.anchors.register.IProjectTask;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Project extends Task {
@@ -150,32 +154,6 @@ public class Project extends Task {
         }
     }
 
-    public static class TaskFactory {
-
-        private Map<String, Task> mCacheTask;
-        private TaskCreator mTaskCreator;
-
-        public TaskFactory(TaskCreator creator) {
-            mTaskCreator = creator;
-            mCacheTask = new HashMap<>();
-        }
-
-        public synchronized Task getTask(String taskId) {
-            Task task = mCacheTask.get(taskId);
-
-            if (task != null) {
-                return task;
-            }
-            task = mTaskCreator.createTask(taskId);
-
-            if (task == null) {
-                throw new IllegalArgumentException("Create task fail. Make sure TaskCreator can create a task with only taskId");
-            }
-            mCacheTask.put(taskId, task);
-            return task;
-        }
-    }
-
     /**
      * 作为临界节点，标识 project 的开始和结束。
      * 同个 project 下可能需要等待 {次后节点们} 统一结束直接才能进入结束节点。
@@ -189,6 +167,20 @@ public class Project extends Task {
         @Override
         public void run(String name, Application application) {
             //noting to do
+        }
+    }
+
+    /**
+     * 所有任务的默认开始节点
+     */
+    public static class DEF_START_TASK extends Task {
+
+        public DEF_START_TASK() {
+            super(false, Process.ALL);
+        }
+
+        @Override
+        protected void run(String name, Application application) {
         }
     }
 }
