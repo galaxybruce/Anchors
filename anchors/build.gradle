@@ -4,7 +4,7 @@ apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 29
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -21,7 +21,7 @@ publish {
     userOrg = 'galaxybruce'
     groupId = 'com.galaxybruce.android'
     artifactId = 'anchors'
-    publishVersion = '1.1.0'
+    publishVersion = '1.1.1'
     desc = 'Android startup framework'
     website = 'https://github.com/galaxybruce/Anchors'
 }
