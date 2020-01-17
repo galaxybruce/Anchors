@@ -126,20 +126,14 @@ public class TaskTest {
         Project project2 = builder2.build();
 
 
-        final Task UiTaskA = new TestTaskFactory.UITHREAD_TASK_A();
         Task UiTaskB = new TestTaskFactory.UITHREAD_TASK_B();
         Task UiTaskC = new TestTaskFactory.UITHREAD_TASK_C();
-
-        project2.dependOn(UiTaskA);
-        project1.dependOn(UiTaskA);
-        UiTaskB.dependOn(UiTaskA);
-        UiTaskC.dependOn(UiTaskA);
 
         AnchorsManager.instance()
                 .setApplication(application)
                 .debuggable(true)
                 .addAnchors(TASK_23,"TASK_E","TASK_10")
-                .start(testTaskFactory, UiTaskA);
+                .start(testTaskFactory, project1, project2, UiTaskB, UiTaskC);
 
 //        Project.Builder taskAync = new Project.Builder("测试异步效果", testTaskFactory);
 //        taskAync.add(UITHREAD_TASK_A);
