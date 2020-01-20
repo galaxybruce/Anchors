@@ -1,5 +1,5 @@
 # note: this project fork from [Anchors](https://github.com/YummyLau/Anchors)
-#### bintray-release  [![](./assets/btn_apache_lisence.png)](LICENSE.txt)
+#### bintray-release  [![](./assets/btn_apache_lisence.png)](LICENSE)
 
 模块|Anchors|anchor-annotation|anchor-compiler
 :---:|:---:|:---:|:---:

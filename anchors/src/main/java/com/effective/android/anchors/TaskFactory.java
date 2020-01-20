@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author bruce.zhang
  * @date 2020-01-15 14:52
- * @description (亲 ， 我是做什么的)
+ * @description
  * <p>
  * modification history:
  */
@@ -48,8 +48,14 @@ public class TaskFactory {
         return task;
     }
 
+    /**
+     * cc-register plugin will generate code inside this method
+     * call this method to register all class implements IProjectTask
+     */
     private void loadTasks() {
-        // register(new ProjectTaskDemo());
+        // auto generate register code by gradle plugin: cc-register
+        // looks like below:
+        // register(new Anchors$$app());
     }
 
     private void register(IProjectTask projectTask) {
@@ -60,6 +66,9 @@ public class TaskFactory {
         mProjectTasks.add(projectTask);
     }
 
+    /**
+     * 处理依赖关系
+     */
     public List<Project> initProjects() {
         List<Project> projects = new ArrayList<>();
         for (IProjectTask projectTask : mProjectTasks) {
