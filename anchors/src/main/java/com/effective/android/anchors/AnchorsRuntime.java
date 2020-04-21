@@ -302,12 +302,13 @@ class AnchorsRuntime {
          * 但是，anchors支持锚点阻塞ui线程，后续可能还会有延迟的异步初始化任务，所以也不要完全饱和。
          */
         private final int CORE_POOL_SIZE = Math.max(4, Math.min(CPU_COUNT - 1, 8));
-        private final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
+        private final int MAXIMUM_POOL_SIZE = Math.max(CPU_COUNT * 2 + 1, CORE_POOL_SIZE);
         private final int KEEP_ALIVE_SECONDS = 30;
 
         private final ThreadFactory sThreadFactory = new ThreadFactory() {
             private final AtomicInteger mCount = new AtomicInteger(1);
 
+            @Override
             public Thread newThread(Runnable r) {
                 return new Thread(r, "Anchors Thread #" + mCount.getAndIncrement());
             }
