@@ -117,17 +117,25 @@ class AnchorsRuntime {
 
     static void tryRunBlockRunnable() {
         if (!sRunBlockApplication.isEmpty()) {
-            if (sRunBlockApplication.size() > 1) {
-                Collections.sort(sRunBlockApplication, AnchorsRuntime.getTaskComparator());
+            List<Task> runBlockApplication = new ArrayList<>(sRunBlockApplication);
+
+            if (runBlockApplication.size() > 1) {
+                try {
+                    Collections.sort(runBlockApplication, AnchorsRuntime.getTaskComparator());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            Runnable runnable = sRunBlockApplication.remove(0);
+            Runnable runnable = runBlockApplication.remove(0);
+            sRunBlockApplication.remove(runnable);
             if (hasAnchorTasks()) {
                 runnable.run();
             } else {
                 sHandler.post(runnable);
-                for (Runnable blockItem : sRunBlockApplication) {
+                for (Runnable blockItem : runBlockApplication) {
                     sHandler.post(blockItem);
                 }
+                runBlockApplication.clear();
                 sRunBlockApplication.clear();
             }
         }

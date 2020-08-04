@@ -129,7 +129,9 @@ public abstract class Task implements Runnable, Comparable<Task> {
         setState(TaskState.START);
         setStateInfo(this);
         if (debuggable()) {
-            logTaskListeners.onStart(this);
+            if(logTaskListeners != null) {
+                logTaskListeners.onStart(this);
+            }
         }
         for (TaskListener listener : taskListeners) {
             listener.onStart(this);
@@ -141,7 +143,9 @@ public abstract class Task implements Runnable, Comparable<Task> {
         setStateInfo(this);
         setThreadName(this, Thread.currentThread().getName());
         if (debuggable()) {
-            logTaskListeners.onRunning(this);
+            if(logTaskListeners != null) {
+                logTaskListeners.onRunning(this);
+            }
         }
         for (TaskListener listener : taskListeners) {
             listener.onRunning(this);
@@ -154,7 +158,9 @@ public abstract class Task implements Runnable, Comparable<Task> {
         setStateInfo(this);
         removeAnchorTask(mId);
         if (debuggable()) {
-            logTaskListeners.onFinish(this);
+            if(logTaskListeners != null) {
+                logTaskListeners.onFinish(this);
+            }
         }
         for (TaskListener listener : taskListeners) {
             listener.onFinish(this);

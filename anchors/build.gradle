@@ -21,7 +21,7 @@ publish {
     userOrg = 'galaxybruce'
     groupId = 'com.galaxybruce.android'
     artifactId = 'anchors'
-    publishVersion = '1.1.2'
+    publishVersion = '1.1.4'
     desc = 'Android startup framework'
     website = 'https://github.com/galaxybruce/Anchors'
 }
