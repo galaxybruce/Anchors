@@ -61,7 +61,7 @@ public class TaskFactory {
     private void register(IProjectTask projectTask) {
         Map<String, Task> taskMap = projectTask.loadInto();
         if(taskMap != null && !taskMap.isEmpty()) {
-            mCacheTask.putAll(projectTask.loadInto());
+            mCacheTask.putAll(taskMap);
         }
         mProjectTasks.add(projectTask);
     }

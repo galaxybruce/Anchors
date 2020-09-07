@@ -117,7 +117,7 @@ public class Project extends Task {
             if (task.getPriority() > mPriority) {
                 mPriority = task.getPriority();
             }
-            return add(mFactory.getTask(taskName));
+            return add(task);
         }
 
         public Builder add(Task task) {
